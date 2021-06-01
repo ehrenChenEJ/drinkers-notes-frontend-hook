@@ -37,7 +37,7 @@ const ItemName = styled.div`
 const ListCard = ({
   listcards,
 }) => {
-  console.log(listcards);
+  // console.log(listcards);
 
   return(
     <ListCardBlock>

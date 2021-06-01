@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import './App.css';
 import styled from '@emotion/styled';
 
@@ -37,6 +37,7 @@ const AddBtn = styled.div`
   width: 100px;
   border-radius: 50px;
   position: relative;
+  cursor: pointer;
 `;
 
 const AddIcon = styled.div`
@@ -64,7 +65,12 @@ const AddIcon2 = styled.div`
 
 
 const App = () =>{
-  const listcards = Array.from({length:8});
+  const [listcard , setListCards] = useState(2);
+  const listcards = Array.from({length:listcard});
+  const addListItem = () => {
+    setListCards(listcard+1);
+  };
+  // click the plus btn to add the list item
 
   return (
     <Container>
@@ -73,7 +79,7 @@ const App = () =>{
           listcards = {listcards}
         />
         <ToolBox>
-          <AddBtn>
+          <AddBtn onClick={addListItem}>
             <AddIcon/>
             <AddIcon2/>
           </AddBtn>
