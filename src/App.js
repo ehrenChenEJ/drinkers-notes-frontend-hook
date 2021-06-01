@@ -64,10 +64,14 @@ const AddIcon2 = styled.div`
 
 
 const App = () =>{
+  const listcards = Array.from({length:8});
+
   return (
     <Container>
       <Wallpapaer>
-        <ListCard/>
+        <ListCard
+          listcards = {listcards}
+        />
         <ToolBox>
           <AddBtn>
             <AddIcon/>

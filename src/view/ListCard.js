@@ -34,15 +34,19 @@ const ItemName = styled.div`
   height: 100%;
 `;
 
-const ListCard = () => {
-
+const ListCard = ({
+  listcards,
+}) => {
+  console.log(listcards);
 
   return(
     <ListCardBlock>
-      <ListItem>
-        <ItemImg/>
-        <ItemName/>
-      </ListItem>
+      {listcards.map((_,index)=>(
+        <ListItem key={index}>
+          <ItemImg/>
+          <ItemName/>
+        </ListItem>
+      ))}
     </ListCardBlock>
   );
 
