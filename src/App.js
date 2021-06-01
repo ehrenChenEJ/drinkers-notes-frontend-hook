@@ -38,6 +38,9 @@ const AddBtn = styled.div`
   border-radius: 50px;
   position: relative;
   cursor: pointer;
+    &:hover{
+      background-color: #ff1053;
+    }
 `;
 
 const AddIcon = styled.div`
@@ -66,9 +69,10 @@ const AddIcon2 = styled.div`
 
 const App = () =>{
   const [listcard , setListCards] = useState(2);
-  const listcards = Array.from({length:listcard});
+  const listcardNum = Array.from({length:listcard});
   const addListItem = () => {
     setListCards(listcard+1);
+    // TODO: 如果增加後端功能這邊應該要加上存至使用者帳號
   };
   // click the plus btn to add the list item
 
@@ -76,7 +80,7 @@ const App = () =>{
     <Container>
       <Wallpapaer>
         <ListCard
-          listcards = {listcards}
+          listcardNum = {listcardNum}
         />
         <ToolBox>
           <AddBtn onClick={addListItem}>

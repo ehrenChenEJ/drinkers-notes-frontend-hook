@@ -35,13 +35,13 @@ const ItemName = styled.div`
 `;
 
 const ListCard = ({
-  listcards,
+  listcardNum,
 }) => {
   // console.log(listcards);
 
   return(
     <ListCardBlock>
-      {listcards.map((_,index)=>(
+      {listcardNum.map((_,index)=>(
         <ListItem key={index}>
           <ItemImg/>
           <ItemName/>
