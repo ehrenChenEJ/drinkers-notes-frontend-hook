@@ -70,11 +70,13 @@ const AddIcon2 = styled.div`
 const App = () =>{
   const [listcard , setListCards] = useState(2);
   const listcardNum = Array.from({length:listcard});
+
+  // click the plus btn to add the list item
   const addListItem = () => {
     setListCards(listcard+1);
     // TODO: 如果增加後端功能這邊應該要加上存至使用者帳號
   };
-  // click the plus btn to add the list item
+  
 
   return (
     <Container>
