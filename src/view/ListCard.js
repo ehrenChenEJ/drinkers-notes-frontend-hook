@@ -43,6 +43,7 @@ const ListCard = ({
     <ListCardBlock>
       {listcardNum.map((_,index)=>(
         <ListItem key={index}>
+          {/* TODO: index 之後要改user id  才能抓到一個帳號下的資料*/}
           <ItemImg/>
           <ItemName/>
         </ListItem>

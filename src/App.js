@@ -74,7 +74,7 @@ const App = () =>{
   // click the plus btn to add the list item
   const addListItem = () => {
     setListCards(listcard+1);
-    // TODO: 如果增加後端功能這邊應該要加上存至使用者帳號
+    // TODO: 如果增加後端功能這邊應該要加上存至使用者帳號(save to userid??)
   };
   
 
