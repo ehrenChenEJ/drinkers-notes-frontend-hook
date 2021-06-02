@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 
 // Component
 import ListCard from './view/ListCard';
+import CardDetail from './view/CardDetail';
 
 const Container = styled.div`
   /* background-color: red; */
@@ -20,7 +21,6 @@ const Wallpapaer = styled.div`
   box-sizing:border-box;
   min-width: 320px;
   padding-top: 10px;
-  
 `;
 
 const ToolBox = styled.div`
@@ -71,6 +71,10 @@ const App = () =>{
   const [listcard , setListCards] = useState(2);
   const listcardNum = Array.from({length:listcard});
 
+  const [sweetNess, setSweet] = useState(1);
+  const [sourNess, setSour] = useState(2);
+  const [fulNess, setFul] = useState(3);
+  
   // click the plus btn to add the list item
   const addListItem = () => {
     setListCards(listcard+1);
@@ -91,6 +95,7 @@ const App = () =>{
           </AddBtn>
         </ToolBox>
       </Wallpapaer>
+      <CardDetail/>
     </Container>
   );
 }
