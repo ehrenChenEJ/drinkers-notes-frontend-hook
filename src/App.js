@@ -74,14 +74,13 @@ const App = () =>{
   const [sweetNess, setSweet] = useState(1);
   const [sourNess, setSour] = useState(2);
   const [fulNess, setFul] = useState(3);
-  
+
   // click the plus btn to add the list item
   const addListItem = () => {
     setListCards(listcard+1);
     // TODO: 如果增加後端功能這邊應該要加上存至使用者帳號(save to userid??)
   };
   
-
   return (
     <Container>
       <Wallpapaer>

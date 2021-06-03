@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+import CircleProgress from '../component/CircleProgress';
+
+
 const DetailWrapper = styled.div`
   position: relative;
   min-width: 320px;
@@ -18,15 +21,22 @@ const Rate = styled.div`
   font-size: 1rem;
   /* display: flex; */
   /* justify-content: center; */
-  width: 50%;
+  /* width: 20%; */
   display: inline-block;
+  padding-left: 10px;
 `;
 
 const Price = styled.div`
   font-size: 1rem;
-  width: 50%;
+  /* width: 50%; */
   display: inline-block;
+  /* background-color: blue; */
 `;
+
+const Img = styled.img`
+  width: 100%;
+  margin: 1rem 0;
+`; 
 
 const LocationBlock = styled.ul`
   display: flex;
@@ -82,12 +92,40 @@ const LevelBar = styled.progress`
 
 
 
+
 // 點入要帶入index
 // 之後要call api 來取得內容
-const CardDetail = () => {
+const CardDetail = ({
+  sqSize,
+  percentage,
+  viewBox,
+  strokeWidth,
+  radius,
+  dashArray,
+  dashOffset,
+}) => {
+  // const sqSize = 10;
+  // const viewBox = `0 0 ${sqSize} ${sqSize}`;
+  // const strokeWidth = 2;
+  // const percentage = 20;
+  // const radius = (sqSize - strokeWidth) / 2;
+  // const dashArray = radius * Math.PI * 2;
+  // const dashOffset = dashArray - dashArray * percentage / 100;
+ 
+
   return(
     <DetailWrapper>
       <Title>酒類名稱</Title>
+      <CircleProgress
+        sqSize = {200}
+        viewBox = {viewBox}
+        strokeWidth = {30}
+        radius = {80}
+        dashArray = {dashArray}
+        dashOffset = {dashOffset}
+        percentage = {50}
+      />
+      <Img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Girls%27_Generation_at_DMC_Festival_2015_MBC_Radio_DJ_Concert_02.jpg"/>
       <Rate>4/5</Rate><Price>參考價:$100</Price>
       <LocationBlock>
         <InforTitle>產區</InforTitle>
@@ -117,7 +155,8 @@ const CardDetail = () => {
           1<LevelBar max="5" value="3"/>5
         </InforContent>
         <InforTitle>適合搭配食物</InforTitle>
-        <InforContent></InforContent>
+        <InforContent>
+        </InforContent>
       </LocationBlock>
     </DetailWrapper>
   );
