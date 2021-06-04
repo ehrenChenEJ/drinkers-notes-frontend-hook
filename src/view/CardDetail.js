@@ -96,37 +96,35 @@ const LevelBar = styled.progress`
 // 點入要帶入index
 // 之後要call api 來取得內容
 const CardDetail = ({
-  sqSize,
-  percentage,
+  sqSize = 120,
+  percentage = 20,
   viewBox,
-  strokeWidth,
-  radius,
+  strokeWidth=12,
+  radius = 45,
   dashArray,
   dashOffset,
 }) => {
-  // const sqSize = 10;
-  // const viewBox = `0 0 ${sqSize} ${sqSize}`;
-  // const strokeWidth = 2;
-  // const percentage = 20;
-  // const radius = (sqSize - strokeWidth) / 2;
-  // const dashArray = radius * Math.PI * 2;
-  // const dashOffset = dashArray - dashArray * percentage / 100;
- 
 
   return(
     <DetailWrapper>
       <Title>酒類名稱</Title>
+      <Img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Girls%27_Generation_at_DMC_Festival_2015_MBC_Radio_DJ_Concert_02.jpg"/>
+      {/* <Rate>4/5</Rate> */}
       <CircleProgress
-        sqSize = {200}
+        // 外層正方形的長度
+        sqSize = {sqSize}
+        // svg viewbox 的大小
         viewBox = {viewBox}
-        strokeWidth = {30}
-        radius = {80}
+        // 圈圈寬度
+        strokeWidth = {strokeWidth}
+        // 圓的直徑
+        radius = {radius}
         dashArray = {dashArray}
         dashOffset = {dashOffset}
-        percentage = {50}
+        // 百分比
+        percentage = {percentage}
       />
-      <Img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Girls%27_Generation_at_DMC_Festival_2015_MBC_Radio_DJ_Concert_02.jpg"/>
-      <Rate>4/5</Rate><Price>參考價:$100</Price>
+      <Price>參考價:$100</Price>
       <LocationBlock>
         <InforTitle>產區</InforTitle>
         <InforContent>Mosel</InforContent>

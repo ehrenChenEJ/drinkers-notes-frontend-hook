@@ -2,35 +2,25 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const SVG = styled.svg`
-  #progressInput {
-  margin: 20px auto;
-  width: 30%;
-}
-
-.circle-background,
-.circle-progress {
-  fill: none;
-}
-
-.circle-background {
-  stroke: #ddd;
-}
-
-.circle-progress {
-  stroke: #ff1053;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.circle-text {
-  font-size: 3em;
-  font-weight: bold;
-  fill: #ff1053;
-}
+  /* border: 1px solid red; */
 `;
 
 const CircleProgress = styled.circle`
+  stroke: #ff1053;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+`;
 
+const CircleBackground = styled.circle`
+  stroke: #ddd;
+  fill: none;
+`;
+
+const CircleText = styled.text`
+  font-size: 2rem;
+  font-weight: bold;
+  fill: #ff1053;
 `;
 
 const Test = ({
@@ -47,34 +37,33 @@ const Test = ({
     <SVG
       width={sqSize}
       height={sqSize}
-      viewBox={viewBox}>
-      <circle
-        className="circle-background"
+      viewBox={viewBox}
+    >
+      <CircleBackground
+        cx = {sqSize/2}
+        cy = {sqSize/2}
+        r = {radius}
+        strokeWidth = {strokeWidth}
+      />
+      <CircleProgress
         cx={sqSize / 2}
         cy={sqSize / 2}
         r={radius}
-        strokeWidth={`${strokeWidth}px`} />
-      <circle
-        className="circle-progress"
-        cx={sqSize / 2}
-        cy={sqSize / 2}
-        r={radius}
-        strokeWidth={`${strokeWidth}px`}
-        // Start progress marker at 12 O'Clock
-        transform={`rotate(-90 ${sqSize / 2} ${sqSize / 2})`}
+        strokeWidth = {strokeWidth}
+        transform = {`rotate(-90 ${sqSize / 2} ${sqSize / 2})`}
         style={{
           strokeDasharray: dashArray,
           strokeDashoffset: dashOffset
-        }} />
-      <text
-        className="circle-text"
+        }}
+      />
+      <CircleText
         x="50%"
         y="50%"
         dy=".3em"
-        textAnchor="middle">
-        {`${percentage}%`
-      }
-    </text>
+        textAnchor="middle"
+      >
+        {percentage/20}
+      </CircleText>
   </SVG>
   );
 };
