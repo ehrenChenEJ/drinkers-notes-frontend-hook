@@ -9,6 +9,7 @@ const DetailWrapper = styled.div`
   min-width: 320px;
   border: 1px solid black;
   padding: 1rem;
+  /* overflow-y: scroll; */
 `;
 
 const Title = styled.div`
@@ -16,27 +17,29 @@ const Title = styled.div`
   width: 100%;
 `;
 
+const RatePriceBlock = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
 const Rate = styled.div`
-  /* background-color: red; */
   font-size: 1rem;
-  /* display: flex; */
-  /* justify-content: center; */
-  /* width: 20%; */
-  display: inline-block;
-  padding-left: 10px;
 `;
 
 const Price = styled.div`
-  font-size: 1rem;
-  /* width: 50%; */
-  display: inline-block;
-  /* background-color: blue; */
+  font-size: 1.5rem;
 `;
 
 const Img = styled.img`
   width: 100%;
   margin: 1rem 0;
 `; 
+
+const ImgContainer = styled.div`
+  border: 1px solid red;
+  /* width: 100vw; */
+`;
 
 const LocationBlock = styled.ul`
   display: flex;
@@ -90,6 +93,21 @@ const LevelBar = styled.progress`
   margin: auto 0.5rem;
 `;
 
+const ButtonBlock = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+`;
+const Button = styled.button`
+  color:black;
+  background: pink;
+  width: 150px;
+  height: 50px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+`;
+
 
 
 
@@ -108,23 +126,27 @@ const CardDetail = ({
   return(
     <DetailWrapper>
       <Title>酒類名稱</Title>
-      <Img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Girls%27_Generation_at_DMC_Festival_2015_MBC_Radio_DJ_Concert_02.jpg"/>
+      <ImgContainer>
+        <Img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Girls%27_Generation_at_DMC_Festival_2015_MBC_Radio_DJ_Concert_02.jpg"/>
+      </ImgContainer>
       {/* <Rate>4/5</Rate> */}
-      <CircleProgress
-        // 外層正方形的長度
-        sqSize = {sqSize}
-        // svg viewbox 的大小
-        viewBox = {viewBox}
-        // 圈圈寬度
-        strokeWidth = {strokeWidth}
-        // 圓的直徑
-        radius = {radius}
-        dashArray = {dashArray}
-        dashOffset = {dashOffset}
-        // 百分比
-        percentage = {percentage}
-      />
-      <Price>參考價:$100</Price>
+      <RatePriceBlock>
+        <CircleProgress
+          // 外層正方形的長度
+          sqSize = {sqSize}
+          // svg viewbox 的大小
+          viewBox = {viewBox}
+          // 圈圈寬度
+          strokeWidth = {strokeWidth}
+          // 圓的直徑
+          radius = {radius}
+          dashArray = {dashArray}
+          dashOffset = {dashOffset}
+          // 百分比
+          percentage = {percentage}
+        />
+        <Price>參考價:$100</Price>
+      </RatePriceBlock>
       <LocationBlock>
         <InforTitle>產區</InforTitle>
         <InforContent>Mosel</InforContent>
@@ -156,6 +178,9 @@ const CardDetail = ({
         <InforContent>
         </InforContent>
       </LocationBlock>
+      <ButtonBlock>
+        <Button>返回</Button><Button>編輯</Button>
+      </ButtonBlock>
     </DetailWrapper>
   );
 };
