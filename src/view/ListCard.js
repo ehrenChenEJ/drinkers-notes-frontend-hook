@@ -1,8 +1,9 @@
-import React from 'react';
+import React,{useState} from 'react';
 import styled from '@emotion/styled';
 const ListCardBlock = styled.div`
   background-color: white;
-  width: 100%;
+  /* width: 100%; */
+  width: 100vw;
   height: calc(100vh - 110px);
   /* display: flex;
   justify-content: center; */
@@ -36,13 +37,15 @@ const ItemName = styled.div`
 
 const ListCard = ({
   listcardNum,
+  handleCurrentPageChange
 }) => {
   // console.log(listcards);
-
+  
+  
   return(
     <ListCardBlock>
       {listcardNum.map((_,index)=>(
-        <ListItem key={index}>
+        <ListItem key={index} onClick={()=>handleCurrentPageChange('CardDetail')}>
           {/* TODO: index 之後要改user id  才能抓到一個帳號下的資料*/}
           <ItemImg/>
           <ItemName/>

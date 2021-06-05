@@ -7,9 +7,12 @@ import CircleProgress from '../component/CircleProgress';
 const DetailWrapper = styled.div`
   position: relative;
   min-width: 320px;
-  border: 1px solid black;
-  padding: 1rem;
-  /* overflow-y: scroll; */
+  /* border: 1px solid black; */
+  padding: 0 1rem;
+  width: 100vw;
+  height: calc(100vh - 110px);
+  overflow-y: scroll;
+  /* margin: 0; */
 `;
 
 const Title = styled.div`
@@ -32,13 +35,16 @@ const Price = styled.div`
 `;
 
 const Img = styled.img`
-  width: 100%;
+  /* width: 100%; */
   margin: 1rem 0;
+  height: 250px;
 `; 
 
 const ImgContainer = styled.div`
-  border: 1px solid red;
-  /* width: 100vw; */
+  /* border: 1px solid red; */
+  width: 100vw;
+  width: 90%;
+  margin: 0 auto;
 `;
 
 const LocationBlock = styled.ul`
@@ -121,6 +127,7 @@ const CardDetail = ({
   radius = 45,
   dashArray,
   dashOffset,
+  handleCurrentPageChange
 }) => {
 
   return(
@@ -179,7 +186,7 @@ const CardDetail = ({
         </InforContent>
       </LocationBlock>
       <ButtonBlock>
-        <Button>返回</Button><Button>編輯</Button>
+        <Button onClick={()=> handleCurrentPageChange('ListCard')}>返回</Button><Button>編輯</Button>
       </ButtonBlock>
     </DetailWrapper>
   );

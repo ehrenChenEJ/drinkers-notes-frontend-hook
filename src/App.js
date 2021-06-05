@@ -80,13 +80,24 @@ const App = () =>{
     setListCards(listcard+1);
     // TODO: 如果增加後端功能這邊應該要加上存至使用者帳號(save to userid??)
   };
-  
+
+  // 更改頁面
+  const [currentPage, setCurrentPage] = useState('ListCard');
+  const handleCurrentPageChange = (currentPage) =>{
+    setCurrentPage(currentPage);
+  };
   return (
     <Container>
       <Wallpapaer>
-        <ListCard
-          listcardNum = {listcardNum}
-        />
+        {currentPage === 'ListCard' && (
+          <ListCard
+            listcardNum = {listcardNum}
+            handleCurrentPageChange = {handleCurrentPageChange}
+          />
+        )}
+        {currentPage === 'CardDetail'&&(
+          <CardDetail handleCurrentPageChange = {handleCurrentPageChange}/>
+        )}
         <ToolBox>
           <AddBtn onClick={addListItem}>
             <AddIcon/>
@@ -94,7 +105,7 @@ const App = () =>{
           </AddBtn>
         </ToolBox>
       </Wallpapaer>
-      <CardDetail/>
+      
     </Container>
   );
 }
