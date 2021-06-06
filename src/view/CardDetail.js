@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import styled from '@emotion/styled';
 
 import CircleProgress from '../component/CircleProgress';
@@ -7,19 +7,14 @@ import CircleProgress from '../component/CircleProgress';
 const DetailWrapper = styled.div`
   position: relative;
   min-width: 320px;
-  /* border: 1px solid black; */
-  /* padding: 0 10px; */
-  /* padding-left: 0.3rem; */
   width: 100vw;
-  /* margin: 0 auto; */
   height: calc(100vh - 110px);
   overflow-y: scroll;
-  /* margin: 0; */
 `;
 
 const Title = styled.div`
   font-size: 2rem;
-  width: 100%;
+  width: 90%;
   margin-left: 1rem;
 `;
 
@@ -39,20 +34,11 @@ const Price = styled.div`
 
 const Img = styled.img`
   width: 100%;
-  /* margin: px 0; */
-  /* height: 250px; */
-  /* align-items: center; */
 `; 
 
 const ImgContainer = styled.div`
-  /* border: 1px solid red; */
   width: 90vw;
-  /* overflow:hidden; */
-  /* width: 90%; */
-  /* margin: 0 auto; */
-  /* margin: 2rem 0; */
   display: flex;
-  /* justify-content: center; */
   padding: 1rem 0px 1rem 1rem;
 
 `;
@@ -62,6 +48,8 @@ const LocationBlock = styled.ul`
   flex-wrap: wrap;
   padding: 0;
   padding-left: 1rem;
+  width: 95%;
+  margin: 0 auto;
 `;
 
 const InforTitle = styled.li`
@@ -81,12 +69,10 @@ const InforContent = styled.li`
   margin-bottom: 0.5rem;
   list-style-type: none;
   margin-left: 0.5rem;
-  /* border: 1px solid red; */
   padding: 0.5rem 0;
 `;
 
 const LevelBar = styled.progress`
-  /* border: 1px solid red; */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -116,8 +102,10 @@ const ButtonBlock = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: nowrap;
-  margin-bottom: 1rem;
+  margin: 1rem auto;
+  /* border: 1px solid red; */
 `;
+
 const Button = styled.button`
   color:black;
   background: pink;
@@ -126,6 +114,14 @@ const Button = styled.button`
   font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
+`;
+
+const DetailInput = styled.input`
+
+`;
+
+const DetailSelect = styled.select`
+
 `;
 
 
@@ -141,9 +137,12 @@ const CardDetail = ({
   radius = 45,
   dashArray,
   dashOffset,
-  handleCurrentPageChange
+  // handleCurrentPageChange,
+  handleCurrentEditState,
+  currentEdit
 }) => {
 
+  console.log(currentEdit);
   return(
     <DetailWrapper>
       <Title>酒類名稱</Title>
@@ -199,9 +198,22 @@ const CardDetail = ({
         <InforContent>
         </InforContent>
       </LocationBlock>
-      <ButtonBlock>
-        <Button onClick={()=> handleCurrentPageChange('ListCard')}>返回</Button><Button>編輯</Button>
-      </ButtonBlock>
+      
+        {/* <Button onClick={()=> handleCurrentPageChange('ListCard')}>返回</Button> */}
+        {/* <Button onClick={()=>handleCurrentEditState('Editing')}>編輯</Button> */}
+        {currentEdit === 'Edited' &&(
+          <ButtonBlock>
+            <Button onClick={()=>handleCurrentEditState('Editing')}>編輯</Button>
+          </ButtonBlock>
+        )}
+        {
+          currentEdit === 'Editing' &&(
+            <ButtonBlock>
+              <Button onClick={()=>handleCurrentEditState('Edited')}>完成</Button>
+              <Button onClick={()=>handleCurrentEditState('Edited')}>取消</Button>
+            </ButtonBlock>
+        )}
+      
     </DetailWrapper>
   );
 };
