@@ -8,8 +8,10 @@ const DetailWrapper = styled.div`
   position: relative;
   min-width: 320px;
   /* border: 1px solid black; */
-  padding: 0 1rem;
+  /* padding: 0 10px; */
+  /* padding-left: 0.3rem; */
   width: 100vw;
+  /* margin: 0 auto; */
   height: calc(100vh - 110px);
   overflow-y: scroll;
   /* margin: 0; */
@@ -18,6 +20,7 @@ const DetailWrapper = styled.div`
 const Title = styled.div`
   font-size: 2rem;
   width: 100%;
+  margin-left: 1rem;
 `;
 
 const RatePriceBlock = styled.div`
@@ -35,22 +38,30 @@ const Price = styled.div`
 `;
 
 const Img = styled.img`
-  /* width: 100%; */
-  margin: 1rem 0;
-  height: 250px;
+  width: 100%;
+  /* margin: px 0; */
+  /* height: 250px; */
+  /* align-items: center; */
 `; 
 
 const ImgContainer = styled.div`
   /* border: 1px solid red; */
-  width: 100vw;
-  width: 90%;
-  margin: 0 auto;
+  width: 90vw;
+  /* overflow:hidden; */
+  /* width: 90%; */
+  /* margin: 0 auto; */
+  /* margin: 2rem 0; */
+  display: flex;
+  /* justify-content: center; */
+  padding: 1rem 0px 1rem 1rem;
+
 `;
 
 const LocationBlock = styled.ul`
   display: flex;
   flex-wrap: wrap;
   padding: 0;
+  padding-left: 1rem;
 `;
 
 const InforTitle = styled.li`
@@ -75,10 +86,12 @@ const InforContent = styled.li`
 `;
 
 const LevelBar = styled.progress`
+  /* border: 1px solid red; */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   border: none;
+  width: 50%;
   // for chrome and safari
   ::-webkit-progress-bar{
     background-color: lightgray;
@@ -103,6 +116,7 @@ const ButtonBlock = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: nowrap;
+  margin-bottom: 1rem;
 `;
 const Button = styled.button`
   color:black;
