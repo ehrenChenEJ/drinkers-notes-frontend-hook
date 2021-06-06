@@ -40,8 +40,7 @@ const AddBtn = styled.div`
   width: 100px;
   border-radius: 50px;
   position: relative;
-  /* cursor: pointer; */
-  cursor: ${({theme})=>theme.cursor};
+  cursor: pointer;
     &:hover{
       background-color: ${({theme})=>theme.backgroundColor};
     }
@@ -68,16 +67,36 @@ const AddIcon2 = styled.div`
   border-radius: 10px;
 `;
 
+const BackIcon = styled.div`
+  border: solid black;
+  border-width: 0 10px 10px 0;
+  padding: 15px;
+  position: absolute;
+  top: 29%;
+  left: 15%;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  border-radius: 5px;
+`;
+
+const BackIcon2 = styled.div`
+  border: solid black;
+  border-width: 0 10px 10px 0;
+  position: absolute;
+  width: 60%;
+  top: 43%;
+  left: 20%; 
+  border-radius: 10px;
+`;
+
 const theme = {
   noAdd:{
     backgroundColor:'gray',
     bg4ToolBox:'lightgrey',
-    cursor:'not-allowed'
   },
   allowAdd:{
     backgroundColor:'#ff5c8a',
     bg4ToolBox:'#ffdeeb',
-    cursor:'pointer'
   }
 };
 
@@ -108,33 +127,52 @@ const App = () =>{
     setCurrentTheme(currentPage === 'ListCard'? 'allowAdd':'noAdd');
   };
 
+  // // 頁面是否為編輯狀態
+  // // Edited & Editing
+  const[currentEdit, setCurrentEdit] = useState('Edited');
+  const handleCurrentEditState = (currentEdit) =>{
+    setCurrentEdit(currentEdit);
+  };
+
   
 
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <Container>
         <Wallpapaer>
+          {/* 列表頁 */}
           {currentPage === 'ListCard' && (
             <ListCard
               listcardNum = {listcardNum}
               handleCurrentPageChange = {handleCurrentPageChange}
             />
           )}
+          {/* 列表詳細頁 */}
           {currentPage === 'CardDetail'&&(
-            <CardDetail handleCurrentPageChange = {handleCurrentPageChange}/>
+            <CardDetail 
+              handleCurrentPageChange = {handleCurrentPageChange}
+              handleCurrentEditState = {handleCurrentEditState}
+              currentEdit = {currentEdit}
+            />
           )}
           <ToolBox>
-            {/* <AddBtn onClick={addListItem}> */}
+            {/* 列表頁用新增功能 */}
             {currentPage === 'ListCard' && (
               <AddBtn onClick={addListItem}>
                 <AddIcon/>
                 <AddIcon2/>
               </AddBtn>
             )}
+            {/* 詳細用返回功能 */}
             {currentPage === "CardDetail" &&(
-              <AddBtn>
-                <AddIcon/>
-                <AddIcon2/>
+              <AddBtn 
+                onClick={()=> {
+                  handleCurrentPageChange('ListCard');
+                  handleCurrentEditState('Edited');
+                }}
+              >
+                <BackIcon/>
+                <BackIcon2/>
               </AddBtn>
             )}
           </ToolBox>
