@@ -70,8 +70,12 @@ const InforContent = styled.li`
   list-style-type: none;
   margin-left: 0.5rem;
   padding: 0.5rem 0;
+  /* border: 1px solid red; */
 `;
-
+const LevelBarBlock = styled.div`
+  /* border: 1px solid red; */
+  width: 100%;
+`;
 const LevelBar = styled.progress`
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -117,11 +121,11 @@ const Button = styled.button`
 `;
 
 const DetailInput = styled.input`
-
+  width: 100px;
 `;
 
 const DetailSelect = styled.select`
-
+  width: 100px;
 `;
 
 
@@ -145,57 +149,197 @@ const CardDetail = ({
   console.log(currentEdit);
   return(
     <DetailWrapper>
-      <Title>酒類名稱</Title>
+      <Title>
+        {currentEdit ==='Edited'&&(
+          '酒類名稱'
+        )}
+        {currentEdit === 'Editing'&&(
+          <DetailInput
+            id="drinkName"
+            name="drinkName"
+          />
+        )}
+      </Title>
+      
       <ImgContainer>
         <Img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Girls%27_Generation_at_DMC_Festival_2015_MBC_Radio_DJ_Concert_02.jpg"/>
       </ImgContainer>
       {/* <Rate>4/5</Rate> */}
       <RatePriceBlock>
-        <CircleProgress
-          // 外層正方形的長度
-          sqSize = {sqSize}
-          // svg viewbox 的大小
-          viewBox = {viewBox}
-          // 圈圈寬度
-          strokeWidth = {strokeWidth}
-          // 圓的直徑
-          radius = {radius}
-          dashArray = {dashArray}
-          dashOffset = {dashOffset}
-          // 百分比
-          percentage = {percentage}
-        />
-        <Price>參考價:$100</Price>
+        {currentEdit === 'Edited' &&(
+          <CircleProgress
+            // 外層正方形的長度
+            sqSize = {sqSize}
+            // svg viewbox 的大小
+            viewBox = {viewBox}
+            // 圈圈寬度
+            strokeWidth = {strokeWidth}
+            // 圓的直徑
+            radius = {radius}
+            dashArray = {dashArray}
+            dashOffset = {dashOffset}
+            // 百分比
+            percentage = {percentage}
+          />
+        )}
+        {currentEdit === 'Editing' &&(
+          <DetailSelect
+            id="drinkRate"
+            name="drinkRate"
+          />
+        )}
+        <Price>
+          參考價:$
+          {currentEdit === 'Edited'&&(
+            100
+          )}
+          {currentEdit === 'Editing' &&(
+            <DetailInput
+              id="drinkPrice"
+              name="drinkPrice"
+            />
+          )}
+        </Price>
+        
       </RatePriceBlock>
       <LocationBlock>
         <InforTitle>產區</InforTitle>
-        <InforContent>Mosel</InforContent>
+        <InforContent>
+          {currentEdit === 'Edited'&&(
+            'Mosel'
+          )}
+          {currentEdit === 'Editing' &&(
+            <DetailInput
+              id="drinkArea"
+              name="drinkArea"
+            />
+          )}
+        </InforContent>
         <InforTitle>國家</InforTitle>
-        <InforContent>德國</InforContent>
+        <InforContent>
+          {currentEdit === 'Edited' &&(
+            '德國'
+          )}
+          {currentEdit === 'Editing' &&(
+            <DetailSelect
+              id="drinkCountry"
+              name="drinkCountry"
+            />
+          )}
+        </InforContent>
         <InforTitle>酒莊(廠)</InforTitle>
-        <InforContent>Selbach-Oster</InforContent>
+        <InforContent>
+          {currentEdit === 'Edited'&&(
+            'Selbach-Oster'
+          )}
+          {currentEdit === 'Editing' &&(
+            <DetailInput
+              id="drinkFirm"
+              name="drinkFirm"
+            />
+          )}
+        </InforContent>
         <InforTitle>葡萄酒品種</InforTitle>
-        <InforContent>Riesling(100%)</InforContent>
+        <InforContent>
+          {currentEdit === 'Edited'&&(
+            'Riesling(100%)'
+          )}
+          {currentEdit === 'Editing' &&(
+            <DetailInput
+              id="drinkKind"
+              name="drinkKind"
+            />
+          )}
+        </InforContent>
         <InforTitle>購買通路</InforTitle>
-        <InforContent>全聯</InforContent>
+        <InforContent>
+          {currentEdit === 'Edited'&&(
+            '全聯'
+          )}
+          {currentEdit === 'Editing'&&(
+            <DetailInput
+              id="drinkShop"
+              name="drinkShop"
+            />
+          )}
+        </InforContent>
         <InforTitle>年份</InforTitle>
-        <InforContent>2017</InforContent>
+        <InforContent>
+          {currentEdit === 'Edited'&&(
+            2017
+          )}
+          {currentEdit === 'Editing'&&(
+            <DetailSelect
+              id="drinkYear"
+              name="drinkYear"
+            />
+          )}
+        </InforContent>
         <InforTitle>酒精濃度</InforTitle>
-        <InforContent>10%</InforContent>
+        <InforContent>
+          {currentEdit === 'Edited'&&(
+            '10%'
+          )}
+          {currentEdit === 'Editing' &&(
+            <DetailSelect
+              id="drinkPercent"
+              name="drinkPercent"
+            />
+          )}
+        </InforContent>
         <InforTitle>甜度</InforTitle>
         <InforContent>
-          1<LevelBar max="5" value="2"/>5
+          {currentEdit === 'Edited' &&(
+            <LevelBarBlock>
+              1<LevelBar max="5" value="2"/>5
+            </LevelBarBlock>  
+          )}
+          {currentEdit === 'Editing' &&(
+            <DetailSelect
+              id="drinkSweet"
+              name="drinkSweet"
+            />
+          )}
         </InforContent>
         <InforTitle>酸度</InforTitle>
         <InforContent>
-          1<LevelBar max="5" value="1"/>5
+          {currentEdit === 'Edited'&&(
+            <LevelBarBlock>
+              1<LevelBar max="5" value="1"/>5
+            </LevelBarBlock>
+          )}
+          {currentEdit === 'Editing' &&(
+            <DetailSelect
+              id="drinkSour"
+              name="drinkSour"
+            />
+          )}
         </InforContent>
         <InforTitle>飽滿度</InforTitle>
         <InforContent>
-          1<LevelBar max="5" value="3"/>5
+          {currentEdit === 'Edited' &&(
+            <LevelBarBlock>
+              1<LevelBar max="5" value="3"/>5
+            </LevelBarBlock>
+          )}
+          {currentEdit === 'Editing'&&(
+            <DetailSelect
+              id="drinkFull"
+              name="drinkFull"
+            />
+          )}
         </InforContent>
         <InforTitle>適合搭配食物</InforTitle>
         <InforContent>
+          {currentEdit === 'Edited'&&(
+            '海鮮'
+          )}
+          {currentEdit === 'Editing' &&(
+            <DetailSelect
+              id="drinkFood"
+              name="drinkFood"
+            />
+          )}
         </InforContent>
       </LocationBlock>
       
