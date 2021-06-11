@@ -128,6 +128,10 @@ const DetailSelect = styled.select`
   width: 100px;
 `;
 
+const DetailWord = styled.div`
+  color: red;
+`;
+
 
 
 
@@ -143,15 +147,36 @@ const CardDetail = ({
   dashOffset,
   // handleCurrentPageChange,
   handleCurrentEditState,
-  currentEdit
+  currentEdit,
+  Drink,
 }) => {
 
-  console.log(currentEdit);
+  // console.log(currentEdit);
+
+  const { 
+    drinkName,
+    drinkRate,
+    drinkPrice,
+    drinkArea,
+    drinkCountry,
+    drinkFirm,
+    drinkKind,
+    drinkShop,
+    drinkYear,
+    drinkPercent,
+    drinkSweet,
+    drinkSour,
+    drinkFull,
+    drinkFood
+  } = Drink;
+
   return(
     <DetailWrapper>
       <Title>
         {currentEdit ==='Edited'&&(
-          '酒類名稱'
+          <DetailWord>
+            {drinkName}
+          </DetailWord>
         )}
         {currentEdit === 'Editing'&&(
           <DetailInput
@@ -179,7 +204,7 @@ const CardDetail = ({
             dashArray = {dashArray}
             dashOffset = {dashOffset}
             // 百分比
-            percentage = {percentage}
+            percentage = {drinkRate}
           />
         )}
         {currentEdit === 'Editing' &&(
@@ -189,9 +214,10 @@ const CardDetail = ({
           />
         )}
         <Price>
-          參考價:$
           {currentEdit === 'Edited'&&(
-            100
+            <DetailWord>
+            參考價:${drinkPrice}
+            </DetailWord>
           )}
           {currentEdit === 'Editing' &&(
             <DetailInput
@@ -206,7 +232,9 @@ const CardDetail = ({
         <InforTitle>產區</InforTitle>
         <InforContent>
           {currentEdit === 'Edited'&&(
-            'Mosel'
+            <DetailWord>
+              {drinkArea}
+            </DetailWord>
           )}
           {currentEdit === 'Editing' &&(
             <DetailInput
@@ -218,7 +246,9 @@ const CardDetail = ({
         <InforTitle>國家</InforTitle>
         <InforContent>
           {currentEdit === 'Edited' &&(
-            '德國'
+            <DetailWord>
+              {drinkCountry}
+            </DetailWord>
           )}
           {currentEdit === 'Editing' &&(
             <DetailSelect
@@ -230,7 +260,9 @@ const CardDetail = ({
         <InforTitle>酒莊(廠)</InforTitle>
         <InforContent>
           {currentEdit === 'Edited'&&(
-            'Selbach-Oster'
+            <DetailWord>
+              {drinkFirm}
+            </DetailWord>
           )}
           {currentEdit === 'Editing' &&(
             <DetailInput
@@ -242,7 +274,9 @@ const CardDetail = ({
         <InforTitle>葡萄酒品種</InforTitle>
         <InforContent>
           {currentEdit === 'Edited'&&(
-            'Riesling(100%)'
+            <DetailWord>
+              {drinkKind}
+            </DetailWord>
           )}
           {currentEdit === 'Editing' &&(
             <DetailInput
@@ -254,7 +288,9 @@ const CardDetail = ({
         <InforTitle>購買通路</InforTitle>
         <InforContent>
           {currentEdit === 'Edited'&&(
-            '全聯'
+            <DetailWord>
+              {drinkShop}
+            </DetailWord>
           )}
           {currentEdit === 'Editing'&&(
             <DetailInput
@@ -266,7 +302,9 @@ const CardDetail = ({
         <InforTitle>年份</InforTitle>
         <InforContent>
           {currentEdit === 'Edited'&&(
-            2017
+            <DetailWord>
+              {drinkYear}
+            </DetailWord>
           )}
           {currentEdit === 'Editing'&&(
             <DetailSelect
@@ -278,7 +316,9 @@ const CardDetail = ({
         <InforTitle>酒精濃度</InforTitle>
         <InforContent>
           {currentEdit === 'Edited'&&(
-            '10%'
+            <DetailWord>
+              {drinkPercent}%
+            </DetailWord>
           )}
           {currentEdit === 'Editing' &&(
             <DetailSelect
@@ -291,7 +331,7 @@ const CardDetail = ({
         <InforContent>
           {currentEdit === 'Edited' &&(
             <LevelBarBlock>
-              1<LevelBar max="5" value="2"/>5
+              1<LevelBar max="5" value={drinkSweet}/>5
             </LevelBarBlock>  
           )}
           {currentEdit === 'Editing' &&(
@@ -305,7 +345,7 @@ const CardDetail = ({
         <InforContent>
           {currentEdit === 'Edited'&&(
             <LevelBarBlock>
-              1<LevelBar max="5" value="1"/>5
+              1<LevelBar max="5" value={drinkSour}/>5
             </LevelBarBlock>
           )}
           {currentEdit === 'Editing' &&(
@@ -319,7 +359,7 @@ const CardDetail = ({
         <InforContent>
           {currentEdit === 'Edited' &&(
             <LevelBarBlock>
-              1<LevelBar max="5" value="3"/>5
+              1<LevelBar max="5" value={drinkFull}/>5
             </LevelBarBlock>
           )}
           {currentEdit === 'Editing'&&(
@@ -332,7 +372,9 @@ const CardDetail = ({
         <InforTitle>適合搭配食物</InforTitle>
         <InforContent>
           {currentEdit === 'Edited'&&(
-            '海鮮'
+            <DetailWord>
+              {drinkFood}
+            </DetailWord>
           )}
           {currentEdit === 'Editing' &&(
             <DetailSelect

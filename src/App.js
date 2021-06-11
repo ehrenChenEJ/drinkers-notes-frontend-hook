@@ -134,6 +134,23 @@ const App = () =>{
     setCurrentEdit(currentEdit);
   };
 
+  const Drink = {
+    drinkName:'Wine',
+    drinkRate:20,
+    drinkPrice:203,
+    drinkArea:'MOSEL',
+    drinkCountry:'德國',
+    drinkFirm:'Selbach-Oster',
+    drinkKind:'Riesling(100%)',
+    drinkShop:'全聯',
+    drinkYear:2018,
+    drinkPercent:20,
+    drinkSweet:3,
+    drinkSour:2,
+    drinkFull:5,
+    drinkFood:'起司'
+  };
+
   
 
   return (
@@ -153,6 +170,7 @@ const App = () =>{
               handleCurrentPageChange = {handleCurrentPageChange}
               handleCurrentEditState = {handleCurrentEditState}
               currentEdit = {currentEdit}
+              Drink = {Drink}
             />
           )}
           <ToolBox>
